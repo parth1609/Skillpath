@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import CardInfo from "./Card-data"
+import CourseCard from "./Course-card"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CardInfo />
+    <CourseCard />
   </React.StrictMode>
 )
