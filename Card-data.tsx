@@ -12,7 +12,7 @@ import { SkeletonRawData } from "./skeleton-loader";
  */
 
 // Re-export everything from api-data so existing imports from Card-data still work
-export { mangoIds, getCourseByMangoId, useCourseData, fetchCourses } from "./api-data";
+export { mangoIds, getCourseByMangoId, useCourseData, fetchCourses, fetchCountryCode, formatCoursePrice } from "./api-data";
 export type { Course } from "./api-data";
 
 export default function CardInfo() {

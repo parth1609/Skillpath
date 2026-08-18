@@ -1,5 +1,5 @@
 import * as React from "react"
-import { useCourseData } from "./api-data"
+import { useCourseData, formatCoursePrice } from "./api-data"
 import { layoutStyles, cardStyles, feedbackStyles } from "./style-css"
 import { SkeletonCardGrid } from "./skeleton-loader"
 
@@ -8,7 +8,7 @@ import { SkeletonCardGrid } from "./skeleton-loader"
  * @framerSupportedLayoutHeight auto
  */
 export default function CourseCard() {
-    const { courses, loading } = useCourseData()
+    const { courses, countryCode, loading } = useCourseData()
 
     if (loading) {
         return <SkeletonCardGrid count={6} />
@@ -34,7 +34,7 @@ export default function CourseCard() {
                             <div style={cardStyles.metaRow}>
                                 <span style={cardStyles.category}>{course.mainCategory}</span>
                                 <span style={cardStyles.price}>
-                                    ₹{(course.pricePaise / 100).toLocaleString("en-IN")}
+                                    {formatCoursePrice(course, countryCode)}
                                 </span>
                             </div>
 
