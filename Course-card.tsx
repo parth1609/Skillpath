@@ -1,7 +1,8 @@
 import * as React from "react"
 import { useCourseData, formatCoursePrice } from "./api-data"
-import { layoutStyles, cardStyles, feedbackStyles } from "./style-css"
+import { layoutStyles, cardStyles } from "./style-css"
 import { SkeletonCardGrid } from "./skeleton-loader"
+import { useCourseSortFilter, SortFilterControls } from "./course-filters"
 
 /**
  * @framerSupportedLayoutWidth auto
@@ -9,6 +10,11 @@ import { SkeletonCardGrid } from "./skeleton-loader"
  */
 export default function CourseCard() {
     const { courses, countryCode, loading } = useCourseData()
+    const {
+        displayed,
+        sortPrice, setSortPrice,
+        filterRefundable, setFilterRefundable,
+    } = useCourseSortFilter(courses, countryCode)
 
     if (loading) {
         return <SkeletonCardGrid count={6} />
@@ -16,8 +22,21 @@ export default function CourseCard() {
 
     return (
         <div style={layoutStyles.pageContainer}>
+            {/* Sort & Filter — same row */}
+            <SortFilterControls
+                sortPrice={sortPrice}
+                setSortPrice={setSortPrice}
+                filterRefundable={filterRefundable}
+                setFilterRefundable={setFilterRefundable}
+            />
+
             <div style={layoutStyles.grid}>
-                {courses.map((course) => (
+                {displayed.length === 0 && (
+                    <p style={{ color: "#6b7280", gridColumn: "1 / -1", textAlign: "center", padding: "40px 0" }}>
+                        No courses match the selected filters.
+                    </p>
+                )}
+                {displayed.map((course) => (
                     <div key={course.mangoId} style={cardStyles.card}>
                         {/* Top Tag Area */}
                         <div style={cardStyles.imageArea}>

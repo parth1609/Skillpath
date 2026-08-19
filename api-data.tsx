@@ -50,16 +50,7 @@ const _coursesByMangoId: Map<string, Course> = new Map();
 let _coursesFetchPromise: Promise<Course[]> | null = null;
 let _countryFetchPromise: Promise<string> | null = null;
 
-// ─── Core Fetch Function ────────────────────────────────────
-/**
- * Fetches all courses from the API with automatic retry.
- * Returns the SAME promise to all callers — the network request
- * is made exactly once. On failure, resets so the next call retries.
- *
- * @param maxRetries  Number of retry attempts (default 8)
- * @param delayMs     Delay between retries in ms (default 600)
- * @returns           Promise resolving to Course[]
- */
+ 
 export function fetchCourses(maxRetries = 8, delayMs = 600): Promise<Course[]> {
     if (_coursesFetchPromise) return _coursesFetchPromise;
 

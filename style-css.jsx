@@ -65,12 +65,16 @@ export const cardStyles = {
         margin: "0 0 8px 0",
         lineHeight: 1.4,
     },
-    /** Course description text */
+    /** Course description text*/
     description: {
         fontSize: "13px",
         color: "#4b5563",
         lineHeight: 1.5,
         margin: "0 0 12px 0",
+        display: "-webkit-box",
+        WebkitLineClamp: 2,
+        WebkitBoxOrient: "vertical",
+        overflow: "hidden",
     },
     /** Horizontal divider line */
     divider: {
@@ -157,5 +161,43 @@ export const debugStyles = {
         background: "#f4f4f4",
         padding: 15,
         borderRadius: 8,
+    },
+}
+
+// ─── Sort & Filter Controls ─────────────────────────────────
+export const controlStyles = {
+    /** Container row for sort + filter controls */
+    controlBar: {
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "16px",
+        alignItems: "flex-end",
+        marginBottom: "20px",
+    },
+    /** Individual control group (label + select) */
+    controlGroup: {
+        display: "flex",
+        flexDirection: "column",
+        gap: "4px",
+    },
+    /** Label above a select */
+    label: {
+        fontSize: "12px",
+        fontWeight: 600,
+        color: "#374151",
+        textTransform: "uppercase",
+        letterSpacing: "0.5px",
+    },
+    /** Dropdown select */
+    select: {
+        padding: "8px 12px",
+        fontSize: "14px",
+        border: "1px solid #d1d5db",
+        borderRadius: "8px",
+        background: "#ffffff",
+        color: "#111827",
+        cursor: "pointer",
+        outline: "none",
+        minWidth: "160px",
     },
 }
